@@ -1,0 +1,149 @@
+:root{
+  --bg:#0b0f14;
+  --card:#111824;
+  --text:#e9eef6;
+  --muted:#a9b6c7;
+  --stroke:#243246;
+  --accent:#ff3b3b;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.top h1{
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+.top p{
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.map-wrap{
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 14px;
+  min-height: 420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.placeholder{
+  text-align:center;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Modal */
+.modal{
+  position: fixed;
+  inset: 0;
+  display:none;
+}
+.modal.is-open{
+  display:block;
+}
+.modal__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+}
+.modal__panel{
+  position: relative;
+
+  /* largeur OK */
+  width: min(760px, calc(100% - 24px));
+
+  /* ✅ important: ne jamais dépasser l’écran */
+  max-height: calc(100vh - 80px);
+  margin: 40px auto;
+
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+
+  /* ✅ si ça dépasse, on scroll DANS la modal */
+  overflow: auto;
+}
+
+.modal__close{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid var(--stroke);
+  background: transparent;
+  color: var(--text);
+  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  cursor:pointer;
+}
+.modal__title{
+  margin: 0 42px 10px 0;
+  font-size: 18px;
+}
+.modal__img{
+  width:100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background:#0a0d12;
+}
+.modal__desc{
+  padding: 20px 20px 28px; /* plus d’espace en bas */
+  line-height: 1.6;       /* texte plus aéré */
+  min-height: 4.5em;      /* garantit ~3 lignes */
+}
+
+
+/* ===== Effet hover sur les gouvernorats ===== */
+.gov {
+  cursor: pointer;
+  transition: filter 0.2s ease, stroke 0.2s ease;
+}
+
+.gov:hover {
+  filter: brightness(1.25);
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+#map svg .gov {
+  cursor: pointer;
+  transition: filter 0.2s ease, stroke 0.2s ease;
+}
+
+#map svg .gov:hover {
+  filter: brightness(1.25);
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+#rect8 { pointer-events: none; }
+#selectedName{
+  width: min(900px, 92%);
+  margin: 16px auto 0 auto;   /* centre + espace */
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
